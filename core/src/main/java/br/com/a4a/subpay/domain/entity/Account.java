@@ -7,8 +7,17 @@ import br.com.a4a.subpay.domain.vo.Money;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-// Represents payment account
-// Account is a DDD Entity
+/**
+ * Represents a payment account in the domain layer.
+ * This class is a DDD (Domain-Driven Design) Entity with identity defined by AccountId.
+ *
+ * An Account maintains a baseline balance and tracks activities through an ActivityWindow.
+ * The account state is immutable after creation, with activities being added to the window.
+ *
+ * @see AccountId
+ * @see ActivityWindow
+ * @see Activity
+ */
 public class Account {
     private final AccountId id;
     private final Money baselineBalance;

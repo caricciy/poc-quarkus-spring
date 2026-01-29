@@ -3,9 +3,18 @@ package br.com.a4a.subpay.domain.vo;
 import java.util.Objects;
 import java.util.UUID;
 
-// Represents the unique identifier for a Account
-// AccountId is a DDD Value Object
-// We could implement this class inside Account entity, but for consistency and reusability, we keep it separate
+/**
+ * Represents the unique identifier for an Account.
+ * This is a DDD (Domain-Driven Design) Value Object.
+ *
+ * We could implement this class inside the Account entity, but for consistency,
+ * reusability, and to follow the Single Responsibility Principle, we keep it separate.
+ *
+ * Uses UUID internally to ensure global uniqueness across distributed systems.
+ * The class is immutable and implements equals/hashCode based on the UUID value.
+ *
+ * @see Account
+ */
 public class AccountId {
 
     private final UUID value;
@@ -14,12 +23,22 @@ public class AccountId {
         this.value = value;
     }
 
-    // Factory method to reate a AccountId from a given string value
+    /**
+     * Factory method to create an AccountId from a given string value.
+     *
+     * @param value the UUID string representation
+     * @return a new AccountId instance
+     * @throws IllegalArgumentException if the string is not a valid UUID
+     */
     public static AccountId withId(String value) {
         return new AccountId(UUID.fromString(value));
     }
 
-    // Factory method to Generate a new unique AccountId
+    /**
+     * Factory method to generate a new unique AccountId.
+     *
+     * @return a new AccountId instance with a randomly generated UUID
+     */
     public static AccountId withoutId() {
         return new AccountId(UUID.randomUUID());
     }

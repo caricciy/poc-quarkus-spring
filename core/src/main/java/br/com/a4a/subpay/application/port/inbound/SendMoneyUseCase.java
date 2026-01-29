@@ -22,11 +22,4 @@ public interface SendMoneyUseCase {
                             @PositiveMoney Money money) implements SelfValidate<SendMoneyCommand> {
     }
 
-    public static void main(String[] args) {
-        SendMoneyCommand command = new SendMoneyCommand(AccountId.withoutId(),
-                AccountId.withoutId(),
-                Money.of(0));
-
-        command.validate();
-    }
 }

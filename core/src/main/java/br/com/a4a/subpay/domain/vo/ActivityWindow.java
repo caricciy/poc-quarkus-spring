@@ -8,8 +8,21 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-// Value Object representing a ActivityWindow - Since it would not be wise to always load all
-// activities of an account into memory, it olds only a window of the last few days or weeks of activities
+/**
+ * Value Object representing a time-bounded window of account activities.
+ *
+ * Since it would not be wise to always load all activities of an account into memory,
+ * this class holds only a window of the last few days or weeks of activities.
+ *
+ * This design pattern follows the "Temporal Query" pattern, where we limit the
+ * scope of data to a specific time range to improve performance and memory usage.
+ *
+ * The window is mutable to allow adding new activities, but returns an unmodifiable
+ * view of the activity list to protect encapsulation.
+ *
+ * @see Activity
+ * @see AccountId
+ */
 public class ActivityWindow {
 
     private List<Activity> activities;

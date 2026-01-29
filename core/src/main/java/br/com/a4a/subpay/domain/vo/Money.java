@@ -2,6 +2,16 @@ package br.com.a4a.subpay.domain.vo;
 
 import java.math.BigDecimal;
 
+/**
+ * Represents a monetary amount in the domain layer.
+ * This is a DDD (Domain-Driven Design) Value Object that is immutable.
+ *
+ * Uses BigDecimal internally to ensure precision in financial calculations
+ * and avoid floating-point arithmetic issues.
+ *
+ * All operations return new Money instances, maintaining immutability.
+ * Provides convenience methods for comparison and arithmetic operations.
+ */
 public class Money {
 
     private final BigDecimal amount;
